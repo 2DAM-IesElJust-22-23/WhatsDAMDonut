@@ -10,4 +10,5 @@
     <string name="serverAddress">Direccion IP</string>
     <string name="Connect">Conectar</string>
     <string name="lorem_ipsum">A</string>
+    <string name="connection_info_template">Connectat a %1$s com a %2$s</string>
 </resources>

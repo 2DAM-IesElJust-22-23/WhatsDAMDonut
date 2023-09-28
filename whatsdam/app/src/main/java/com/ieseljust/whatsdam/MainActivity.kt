@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.ieseljust.whatsdam.databinding.ActivityMainBinding
+import java.net.Inet4Address
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    lateinit var nickName: String
+    lateinit var serverAddress: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         buttonConnect.setOnClickListener {
             // Obtener el valor del NickName y la dirección IP del servidor
-            val nickName = binding.nickNameText.text.toString()
-            val serverAddress = binding.serverAddressText.text.toString()
+            nickName = binding.nickNameText.text.toString()
+            serverAddress = binding.serverAddressText.text.toString()
 
             // Validar el NickName no esté vacío y la dirección IP sea válida
             if (isValidNickName(nickName) && isValidIPAddress(serverAddress)) {
@@ -46,6 +49,8 @@ class MainActivity : AppCompatActivity() {
     private fun openMessageWindow() {
         // Aquí puedes abrir la ventana de mensajes
         val intent = Intent(this, MessagesWindow::class.java)
+        intent.putExtra("serverAddress", serverAddress)
+        intent.putExtra("nickName", nickName)
         startActivity(intent)
     }
 }
