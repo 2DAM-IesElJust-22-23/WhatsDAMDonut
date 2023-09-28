@@ -41,9 +41,35 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isValidIPAddress(ipAddress: String): Boolean {
-        // Implementa aquí la validación de una dirección IP correcta
+        // Primero, verifica el formato utilizando expresiones regulares
         val ipAddressRegex = """^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$""".toRegex()
-        return ipAddress.matches(ipAddressRegex)
+        if (!ipAddress.matches(ipAddressRegex)) {
+            return false // El formato es incorrecto
+        }
+
+        val parts = ipAddress.split(".")
+
+        // Deben haber exactamente 4 partes separadas por puntos
+        if (parts.size != 4) {
+            return false
+        }
+
+        for (part in parts) {
+            try {
+                val number = part.toInt()
+
+                // Cada parte debe ser un número entre 0 y 255
+                if (number < 0 || number > 255) {
+                    return false
+                }
+            } catch (e: NumberFormatException) {
+                // Si una parte no es un número válido, la dirección IP es inválida
+                return false
+            }
+        }
+
+        // Si se superan todas las verificaciones, la dirección IP es válida
+        return true
     }
 
     private fun openMessageWindow() {
