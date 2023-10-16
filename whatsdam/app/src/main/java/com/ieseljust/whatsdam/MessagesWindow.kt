@@ -28,6 +28,7 @@ class MessagesWindow : AppCompatActivity() {
         serverAddress = intent.getStringExtra("serverAddress") ?: ""
         nickName = intent.getStringExtra("nickName") ?: ""
 
+
         // Configurar el texto del TextView reemplazando los marcadores de posición
         val connectionInfoTextView = findViewById<TextView>(R.id.connectionInfoTextView)
         val formattedText = getString(R.string.connection_info_template, serverAddress, nickName)
@@ -44,12 +45,13 @@ class MessagesWindow : AppCompatActivity() {
         recyclerView.adapter = adapter
 
 
-        // Configurar el clic del botón de enviar (borrar el texto por ahora)
+        // Configurar el clic del botón de enviar
         sendButton.setOnClickListener {
             val missatgeText = messageEditText.text.toString()
             if (missatgeText.isNotEmpty()){
                 Gestor.afegirMissatge(nickName, missatgeText)
-                adapter.notifyDataSetChanged()
+                adapter.notifyItemInserted(Gestor.llistaMissatges.size - 1)
+                recyclerView.scrollToPosition(Gestor.llistaMissatges.size -1)
                 messageEditText.text.clear()
             }
         }
