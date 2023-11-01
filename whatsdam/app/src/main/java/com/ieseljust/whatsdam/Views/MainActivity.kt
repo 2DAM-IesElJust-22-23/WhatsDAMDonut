@@ -1,11 +1,10 @@
-package com.ieseljust.whatsdam
+package com.ieseljust.whatsdam.Views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.ieseljust.whatsdam.databinding.ActivityMainBinding
-import java.net.Inet4Address
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

@@ -1,6 +1,6 @@
-package com.ieseljust.whatsdam
+package com.ieseljust.whatsdam.model
 
-class Missatge (val nomUsuari: String, val text: String)
+data class Missatge (val nomUsuari: String, val text: String)
 
 object Gestor {
     val llistaMissatges = mutableListOf<Missatge>()

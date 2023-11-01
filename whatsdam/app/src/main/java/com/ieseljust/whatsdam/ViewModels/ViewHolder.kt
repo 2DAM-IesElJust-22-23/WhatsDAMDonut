@@ -1,8 +1,10 @@
-package com.ieseljust.whatsdam
+package com.ieseljust.whatsdam.ViewModels
 
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.ieseljust.whatsdam.R
+import com.ieseljust.whatsdam.model.Missatge
 import java.text.SimpleDateFormat
 import java.util.Date
 

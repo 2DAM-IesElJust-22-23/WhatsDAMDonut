@@ -13,10 +13,10 @@
         android:theme="@style/Theme.Whatsdam"
         tools:targetApi="34">
         <activity
-            android:name=".MessagesWindow"
+            android:name=".Views.MessagesWindow"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Views.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Whatsdam">
